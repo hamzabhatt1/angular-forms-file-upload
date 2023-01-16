@@ -1,0 +1,65 @@
+<mat-card>
+	<mat-card-content>
+		<div>
+
+			<form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="example-form">
+				<h4>Form </h4>
+
+				<mat-input-container class="fill">
+				<input #emailIdSpy matInput name="emailId" placeholder="Name" type="text" required [(ngModel)]="email"
+				 #emailId="ngModel">
+				<mat-error *ngIf="!emailId.valid && emailId.errors.required">
+					Name is <strong>required</strong>
+				</mat-error>
+				<mat-error *ngIf="!emailId.valid && emailId.errors.pattern">
+					Entered Email Did not match the pattern of type info@netsol.com
+				</mat-error>
+				<BR />
+
+			</mat-input-container>
+
+<br>
+				<mat-input-container class="fill">
+					<input #emailIdSpy matInput name="emailId" placeholder="Email" type="email" required [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+					 #emailId="ngModel">
+					<mat-error *ngIf="!emailId.valid && emailId.errors.required">
+						Email is <strong>required</strong>
+					</mat-error>
+					<mat-error *ngIf="!emailId.valid && emailId.errors.pattern">
+						Entered Email Did not match the pattern of type info@netsol.com
+					</mat-error>
+					<BR />
+
+				</mat-input-container>
+<br>
+			
+			<mat-form-field appearance="fill">
+			<mat-label>Select</mat-label>
+			<mat-select>
+				<mat-option value="one">First option</mat-option>
+				<mat-option value="two">Second option</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<br>
+				<BR/>
+				<input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+
+   {{fileName || "No file uploaded yet."}}
+
+    <button mat-mini-fab color="primary" class="upload-btn"
+      (click)="fileUpload.click()">
+        <mat-icon>UP</mat-icon>
+    </button>
+</div>
+				<BR/>
+				<BR/>
+				<button mat-raised-button color="primary"  type="submit">Submit</button>
+			</form>
+		</div>
+
+
+	</mat-card-content>
+</mat-card>
